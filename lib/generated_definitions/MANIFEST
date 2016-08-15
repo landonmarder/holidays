@@ -23,6 +23,7 @@ The following definition files are included in this installation:
 * generated_definitions/europe
 * generated_definitions/federal_reserve
 * generated_definitions/fedex
+* generated_definitions/fedex_ground
 * generated_definitions/fi
 * generated_definitions/fr
 * generated_definitions/gb
