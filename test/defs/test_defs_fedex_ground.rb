@@ -11,6 +11,7 @@ class Fedex_groundDefinitionTests < Test::Unit::TestCase  # :nodoc:
  Date.civil(2015,1,2) => 'Day After New Year\'s Day',
  Date.civil(2016,3,27) => 'Easter',
  Date.civil(2015,5,25) => 'Memorial Day',
+ Date.civil(2015,7,3) => 'Day Before Independence Day',
  Date.civil(2015,7,4) => 'Independence Day',
  Date.civil(2015,9,5) => 'Saturday Before Labor Day',
  Date.civil(2015,9,6) => 'Sunday Before Labor Day',
