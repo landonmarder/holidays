@@ -21,6 +21,7 @@ defs:
   Federal_Reserve: ['federal_reserve.yaml']
   FedEx: ['fedex.yaml']
   Fedex_Ground: ['fedex_ground.yaml']
+  Fedex_Home: ['fedex_home.yaml']
   FI: ['fi.yaml']
   FR: ['fr.yaml']
   GB: ['gb.yaml']

@@ -1,4 +1,4 @@
-# FedEx Ground holiday definitions for the Ruby Holiday gem.
+# FedEx Home Delivery holiday definitions for the Ruby Holiday gem.
 #
 #
 # Updated: 2016-08-15.
@@ -7,69 +7,75 @@
 months:
   0:
   - name: Easter
-    regions: [fedex_ground]
+    regions: [fedex_home]
     function: easter(year)
   1:
   - name: New Year's Day
-    regions: [fedex_ground]
+    regions: [fedex_home]
     mday: 1
     observed: to_weekday_if_weekend(date)
   - name: Day After New Year's Day
-    regions: [fedex_ground]
+    regions: [fedex_home]
     mday: 2
   5:
   - name: Memorial Day
     week: -1
-    regions: [fedex_ground]
+    regions: [fedex_home]
     wday: 1
+  - name: Day After Memorial Day
+    week: -1
+    regions: [fedex_home]
+    wday: 2
   7:
   - name: Day Before Independence Day
-    regions: [fedex_ground]
+    regions: [fedex_home]
     mday: 3
   - name: Independence Day
-    regions: [fedex_ground]
+    regions: [fedex_home]
     mday: 4
     observed: to_weekday_if_weekend(date)
+  - name: Day After Independence Day
+    regions: [fedex_home]
+    mday: 5
   9:
   - name: Labor Day
     week: 1
-    regions: [fedex_ground]
+    regions: [fedex_home]
     wday: 1
+  - name: Day After Labor Day
+    week: 1
+    regions: [fedex_home]
+    wday: 2
   11:
   - name: Thanksgiving
     week: 4
-    regions: [fedex_ground]
+    regions: [fedex_home]
     wday: 4
   12:
-  - name: Day Before Christmas Eve
-    regions: [fedex_ground]
-    mday: 23
   - name: Christmas Eve
-    regions: [fedex_ground]
+    regions: [fedex_home]
     mday: 24
   - name: Christmas Day
-    regions: [fedex_ground]
+    regions: [fedex_home]
     mday: 25
   - name: Day After Christmas
-    regions: [fedex_ground]
+    regions: [fedex_home]
     mday: 26
-  - name: New Year's Eve
-    regions: [fedex_ground]
-    mday: 31
 methods:
 tests: |
     {Date.civil(2015,1,1) => 'New Year\'s Day',
      Date.civil(2015,1,2) => 'Day After New Year\'s Day',
      Date.civil(2016,3,27) => 'Easter',
      Date.civil(2015,5,25) => 'Memorial Day',
+     Date.civil(2015,5,26) => 'Day After Memorial Day',
      Date.civil(2015,7,3) => 'Day Before Independence Day',
      Date.civil(2015,7,4) => 'Independence Day',
+     Date.civil(2015,7,5) => 'Day After Independence Day',
      Date.civil(2015,9,7) => 'Labor Day',
+     Date.civil(2016,9,6) => 'Day After Labor Day',
      Date.civil(2016,11,24) => 'Thanksgiving',
-     Date.civil(2015,12,23) => 'Day Before Christmas Eve',
      Date.civil(2015,12,24) => 'Christmas Eve',
      Date.civil(2015,12,25) => 'Christmas Day',
-     Date.civil(2015,12,26) => 'Day After Christmas',
-     Date.civil(2015,12,31) => 'New Year\'s Eve'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :fedex_ground)[0] || {})[:name]
+     Date.civil(2015,12,26) => 'Day After Christmas'}.each do |date, name|
+      assert_equal name, (Holidays.on(date, :fedex_home)[0] || {})[:name]
     end

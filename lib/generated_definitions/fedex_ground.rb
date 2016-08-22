@@ -24,11 +24,8 @@ module Holidays
       5 => [{:wday => 1, :week => -1, :name => "Memorial Day", :regions => [:fedex_ground]}],
       7 => [{:mday => 3, :name => "Day Before Independence Day", :regions => [:fedex_ground]},
             {:mday => 4, :observed => "to_weekday_if_weekend(date)", :observed_arguments => [:date], :name => "Independence Day", :regions => [:fedex_ground]}],
-      9 => [{:function => "saturday_before_labor_day(year)", :function_arguments => [:year], :name => "Saturday Before Labor Day", :regions => [:fedex_ground]},
-            {:function => "sunday_before_labor_day(year)", :function_arguments => [:year], :name => "Sunday Before Labor Day", :regions => [:fedex_ground]},
-            {:wday => 1, :week => 1, :name => "Labor Day", :regions => [:fedex_ground]}],
-      11 => [{:wday => 4, :week => 4, :name => "Thanksgiving", :regions => [:fedex_ground]},
-            {:function => "saturday_after_thanksgiving(year)", :function_arguments => [:year], :name => "Saturday After Thanksgiving", :regions => [:fedex_ground]}],
+      9 => [{:wday => 1, :week => 1, :name => "Labor Day", :regions => [:fedex_ground]}],
+      11 => [{:wday => 4, :week => 4, :name => "Thanksgiving", :regions => [:fedex_ground]}],
       12 => [{:mday => 23, :name => "Day Before Christmas Eve", :regions => [:fedex_ground]},
             {:mday => 24, :name => "Christmas Eve", :regions => [:fedex_ground]},
             {:mday => 25, :name => "Christmas Day", :regions => [:fedex_ground]},
@@ -39,19 +36,7 @@ module Holidays
 
     def self.custom_methods
       {
-        "sunday_before_labor_day(year)" => Proc.new { |year|
-Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 9, 1, 1) - 1
-},
-
-"saturday_before_labor_day(year)" => Proc.new { |year|
-Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 9, 1, 1) - 2
-},
-
-"saturday_after_thanksgiving(year)" => Proc.new { |year|
-Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 11, 4, 4) + 2
-},
-
-
+        
       }
     end
   end
